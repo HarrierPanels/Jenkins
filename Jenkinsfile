@@ -11,11 +11,11 @@ pipeline {
         stage('Check Commit Message') {
             steps {
                 script {
-                    def commitMessage = sh(script: 'git log --format=%B -n 1', returnStatus: true).trim()
+                    def commitMessage = sh(script: 'git log --format=%B -n 1', returnStatus: true)
                     def jiraPattern = ~/^([A-Z]+-\d+)\s+: .*/
-                    if (!commitMessage) {
+                    if (commitMessage != 0) {
                         echo("Warning: No commit message found.")
-                    } else if (!(commitMessage =~ jiraPattern)) {
+                    } else if (!(sh(script: 'git log --format=%B -n 1 | grep -q "${jiraPattern}" && echo "true" || echo "false"', returnStatus: true) == 0)) {
                         echo("Warning: Commit message does not start with a Jira code.")
                     }
                 }
@@ -41,7 +41,7 @@ pipeline {
         stage('Check for Feature Branches') {
             steps {
                 script {
-                    def branches = checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/HarrierPanels/Jenkins']]])
+                    def branches = checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/HarrierPanels/Jenkins']])
 
                     if (branches.size() > 0) {
                         echo('Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.')
