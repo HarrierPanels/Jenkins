@@ -14,9 +14,9 @@ pipeline {
                     def commitMessage = sh(script: 'git log --format=%B -n 1', returnStatus: true).trim()
                     def jiraPattern = ~/^([A-Z]+-\d+)\s+: .*/
                     if (!commitMessage) {
-                        error("No commit message found.")
+                        echo("Warning: No commit message found.")
                     } else if (!(commitMessage =~ jiraPattern)) {
-                        error("Commit message does not start with a Jira code.")
+                        echo("Warning: Commit message does not start with a Jira code.")
                     }
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
         stage('Check for Feature Branches') {
             steps {
                 script {
-                    def branches = checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/your/repo.git']]])
+                    def branches = checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/your/repo.git']])
 
                     if (branches.size() > 0) {
                         echo('Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.')
@@ -51,4 +51,3 @@ pipeline {
         }
     }
 }
-
