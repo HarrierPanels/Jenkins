@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.14.2
 
 RUN echo "Hello, World!" > /var/www/index.html
 
