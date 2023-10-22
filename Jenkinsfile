@@ -41,7 +41,7 @@ pipeline {
         stage('Check for Feature Branches') {
             steps {
                 script {
-                    def branches = checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/HarrierPanels/Jenkins']])
+                    def branches = checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/HarrierPanels/Jenkins']]])
 
                     if (branches.size() > 0) {
                         echo('Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.')
