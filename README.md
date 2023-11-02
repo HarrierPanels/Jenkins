@@ -13,3 +13,21 @@ Jenkins.instance.nodes.each {
 #### Output:
 > Node: local1, Online: true, Label: local1<br>
 > Result: [hudson.slaves.DumbSlave[local1]]
+#### Jenkinsfile (Declarative Pipeline):
+```
+pipeline {
+    agent {
+        docker { image 'node:18.18.2-alpine3.18' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}
+```
+#### Output:
+> [Pipeline] stage
+. Result: [hudson.slaves.DumbSlave[local1]]
