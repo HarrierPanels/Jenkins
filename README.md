@@ -11,5 +11,5 @@ Jenkins.instance.nodes.each {
 }
 ```
 #### Output:
-> Node: local1, Online: true, Label: local1
+> Node: local1, Online: true, Label: local1<br>
 > Result: [hudson.slaves.DumbSlave[local1]]
