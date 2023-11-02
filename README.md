@@ -83,7 +83,7 @@ for (User user : User.getAll()) {
    c. Linting of Dockerfiles
 3. For a pipeline file, block the option to merge feature branch into main.
 ### The Jenkinsfile below includes four stages:
-<sup>Clone Repository:</sup> Clones the repository from the current branch.
-<sup>Check Commit Message:</sup> Checks the commit message for compliance with best practices.
-<sup>Lint Dockerfiles:</sup> Lints the Dockerfiles using Hadolint.
-<sup>Check for Feature Branches:</sup> Checks if there are any feature branches in the repository and prints a warning message if there are.
+<sup>Clone Repository:</sup><br>Clones the repository from the current branch.
+<sup>Check Commit Message:</sup><br>Checks the commit message for compliance with best practices.
+<sup>Lint Dockerfiles:</sup><br>Lints the Dockerfiles using Hadolint.
+<sup>Check for Feature Branches:</sup><br>Checks if there are any feature branches in the repository and prints a warning message if there are.
