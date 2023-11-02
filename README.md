@@ -10,6 +10,6 @@ Jenkins.instance.nodes.each {
     println "Node: ${it.name}, Online: ${it.toComputer().online}, Label: ${it.labelString}"
 }
 ```
-### Output:
+#### Output:
 > Node: local1, Online: true, Label: local1
-Result: [hudson.slaves.DumbSlave[local1]]
+> Result: [hudson.slaves.DumbSlave[local1]]
