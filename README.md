@@ -30,11 +30,11 @@ pipeline {
 ```
 #### Output:
 > [Pipeline] stage<br>
-> [Pipeline] { (Test)<br>
-> [Pipeline] sh<br>
-> [guided-tour] Running shell script<br>
-> + node --version<br>
-> v16.13.1<br>
-> [Pipeline] }<br>
-> [Pipeline] // stage<br>
-> [Pipeline] }
+[Pipeline] { (Test) <br>
+[Pipeline] sh<br>
+[guided-tour] Running shell script<br>
++ node --version<br>
+v16.13.1<br>
+[Pipeline] }<br>
+[Pipeline] // stage<br>
+[Pipeline] }
