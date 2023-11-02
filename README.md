@@ -78,8 +78,8 @@ for (User user : User.getAll()) {
 ## Create a multibranch pipeline (branches master and feature), that is or doing:
 1. Triggered by a change in any branch of the git repository, a separate pipeline is created for the branch
 2. The pipeline consists of steps:
-a. Clone the repository from the feature branch
-b. check the commit of the message for compliance with best practice (length of the message, first the Jira code of the ticket)
-c. Linting of Dockerfiles
+   a. Clone the repository from the feature branch
+   b. Check the commit of the message for compliance with best practice (length of the message, first the Jira code of the ticket)
+   c. Linting of Dockerfiles
 3. For a pipeline file, block the option to merge feature branch into main.
 
