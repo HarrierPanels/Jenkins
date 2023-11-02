@@ -405,4 +405,4 @@ script block - (1.2 sec in block)
 checkout - (1.1 sec in self)			
 echo - (13 ms in self)	Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.
 ```
-[See next](HarrierPanels/my-java-project/)
+[See next](../HarrierPanels/my-java-project/)
