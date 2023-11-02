@@ -5,8 +5,8 @@
 
 ## 1. Configuring agents 1.1 static ) 1.2 dynamic (eg https://www.jenkins.io/doc/book/pipeline/docker/)
 
-'''
+```
 Jenkins.instance.nodes.each {
     println "Node: ${it.name}, Online: ${it.toComputer().online}, Label: ${it.labelString}"
 }
-'''
+```
