@@ -245,4 +245,164 @@ script block - (1.4 sec in block)
 checkout - (1.3 sec in self)			
 echo - (16 ms in self)	Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.
 ```
-<a tooltip="ID: 2" href="/job/Multibranch/job/master/16/execution/node/2/" class="jenkins-table__link" title="ID: 2">Start of Pipeline - (12 sec in block)</a></td><td></td><td></td><td class="jenkins-table__cell--tight"><div class="jenkins-table__cell__button-wrapper"></div></td><td data="4" class="jenkins-table__cell--tight jenkins-table__icon"><div class="jenkins-table__cell__button-wrapper"><span style="width: 24px; height: 24px; " class="build-status-icon__wrapper icon-blue "><span class="build-status-icon__outer"><svg viewBox="0 0 24 24" tooltip="Success" focusable="false" class="svg-icon " title="Success"><use href="/images/build-status/build-status-sprite.svg#build-status-static"></use></svg></span><svg viewBox="0 0 24 24" tooltip="Success" focusable="false" class="svg-icon icon-blue " title="Success"><use href="/static/5e767724/images/build-status/build-status-sprite.svg#last-successful"></use></svg></span></div></td></tr><tr style="opacity: 1.0"><td style="padding-left: calc(var(--table-padding) * 3)"><a tooltip="ID: 3" href="/job/Multibranch/job/master/16/execution/node/3/" class="jenkins-table__link" title="ID: 3">node - (7.4 sec in block)</a></td><td>local1</td><td></td><td class="jenkins-table__cell--tight"><div class="jenkins-table__cell__button-wrapper"><a tooltip="Console Output" href="/job/Multibranch/job/master/16/execution/node/3/log/" class="jenkins-table__button" title="Console Output"><svg class="icon-terminal icon-lg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title></title>
+```
+Push event to branch feature
+22:20:28 Connecting to https://api.github.com using github-creds-user-token
+Obtained Jenkinsfile from 60eeea963b277272837449b4282f30ea1d5b789c
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on local1 in /home/ec2-user/jenkins/workspace/Multibranch_feature
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds-user-token
+Fetching changes from the remote Git repository
+Fetching without tags
+ > git rev-parse --resolve-git-dir /home/ec2-user/jenkins/workspace/Multibranch_feature/.git # timeout=10
+ > git config remote.origin.url https://github.com/HarrierPanels/Jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/HarrierPanels/Jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+using GIT_ASKPASS to set credentials github-creds-user-token
+ > git fetch --no-tags --force --progress -- https://github.com/HarrierPanels/Jenkins.git +refs/heads/feature:refs/remotes/origin/feature # timeout=10
+Checking out Revision 60eeea963b277272837449b4282f30ea1d5b789c (feature)
+Commit message: "update 19 feature"
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 60eeea963b277272837449b4282f30ea1d5b789c # timeout=10
+ > git rev-list --no-walk 852ff763f3b360031040d507da5240c1ad2e1b5f # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone Repository)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds-user-token
+Fetching changes from the remote Git repository
+Fetching without tags
+Checking out Revision 60eeea963b277272837449b4282f30ea1d5b789c (feature)
+Commit message: "update 19 feature"
+ > git rev-parse --resolve-git-dir /home/ec2-user/jenkins/workspace/Multibranch_feature/.git # timeout=10
+ > git config remote.origin.url https://github.com/HarrierPanels/Jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/HarrierPanels/Jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+using GIT_ASKPASS to set credentials github-creds-user-token
+ > git fetch --no-tags --force --progress -- https://github.com/HarrierPanels/Jenkins.git +refs/heads/feature:refs/remotes/origin/feature # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 60eeea963b277272837449b4282f30ea1d5b789c # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Check Commit Message)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ git log --format=%B -n 1
+update 19 feature
+
+[Pipeline] sh
++ grep -q ''
++ git log --format=%B -n 1
++ echo true
+true
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint Dockerfiles)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ find . -name Dockerfile
+[Pipeline] sh
++ hadolint ./Dockerfile
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Check for Feature Branches)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 60eeea963b277272837449b4282f30ea1d5b789c (refs/remotes/origin/feature)
+Commit message: "update 19 feature"
+ > git rev-parse --resolve-git-dir /home/ec2-user/jenkins/workspace/Multibranch_feature/.git # timeout=10
+ > git config remote.origin.url https://github.com/HarrierPanels/Jenkins # timeout=10
+Fetching upstream changes from https://github.com/HarrierPanels/Jenkins
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+ > git fetch --tags --force --progress -- https://github.com/HarrierPanels/Jenkins +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/feature^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 60eeea963b277272837449b4282f30ea1d5b789c # timeout=10
+[Pipeline] echo
+Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
+```
+```
+Start of Pipeline - (8.8 sec in block)			
+	
+node - (7.8 sec in block)	local1		
+node block - (7.6 sec in block)			
+	
+stage - (2 sec in block)	Declarative: Checkout SCM		
+stage block (Declarative: Checkout SCM) - (1.9 sec in block)			
+	
+checkout - (1.8 sec in self)			
+withEnv - (5.4 sec in block)	GIT_BRANCH, GIT_COMMIT, GIT_PREVIOUS_COMMIT, GIT_PREVIOUS_SUCCESSFUL_COMMIT, GIT_URL		
+withEnv block - (5.3 sec in block)			
+	
+stage - (1.3 sec in block)	Clone Repository		
+stage block (Clone Repository) - (1.2 sec in block)			
+	
+checkout - (1.1 sec in self)			
+stage - (1.1 sec in block)	Check Commit Message		
+stage block (Check Commit Message) - (1 sec in block)			
+	
+script - (0.96 sec in block)			
+script block - (0.87 sec in block)			
+	
+sh - (0.4 sec in self)	git log --format=%B -n 1		
+sh - (0.42 sec in self)	git log --format=%B -n 1 | grep -q "${jiraPattern}" && echo "true" || echo "false"		
+stage - (1.3 sec in block)	Lint Dockerfiles		
+stage block (Lint Dockerfiles) - (1.2 sec in block)			
+	
+script - (1.1 sec in block)			
+script block - (1.1 sec in block)			
+	
+sh - (0.47 sec in self)	find . -name Dockerfile		
+sh - (0.38 sec in self)	hadolint ./Dockerfile		
+stage - (1.4 sec in block)	Check for Feature Branches		
+stage block (Check for Feature Branches) - (1.3 sec in block)			
+	
+script - (1.2 sec in block)			
+script block - (1.2 sec in block)			
+	
+checkout - (1.1 sec in self)			
+echo - (13 ms in self)	Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.
+```
+[See next](HarrierPanels/my-java-project/)
