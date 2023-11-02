@@ -84,3 +84,122 @@ for (User user : User.getAll()) {
 3. For a pipeline file, block the option to merge feature branch into main.
 ### The [Jenkinsfile](Jenkinsfile) includes four stages:
 <sup>Clone Repository:</sup><br><br>Clones the repository from the current branch.<br><br> <sup>Check Commit Message:</sup><br><br>Checks the commit message for compliance with best practices.<br><br> <sup>Lint Dockerfiles:</sup><br><br>Lints the Dockerfiles using Hadolint.<br><br> <sup>Check for Feature Branches:</sup><br><br>Checks if there are any feature branches in the repository and prints a warning message if there are.<br><br>
+```
+Push event to branch master
+22:27:53 Connecting to https://api.github.com using github-creds-user-token
+Obtained Jenkinsfile from a1c0576053d1791a19257a79fb286854f3f851d3
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on local1 in /home/ec2-user/jenkins/workspace/Multibranch_master
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds-user-token
+Fetching changes from the remote Git repository
+Fetching without tags
+Checking out Revision a1c0576053d1791a19257a79fb286854f3f851d3 (master)
+Commit message: "update 20"
+ > git rev-parse --resolve-git-dir /home/ec2-user/jenkins/workspace/Multibranch_master/.git # timeout=10
+ > git config remote.origin.url https://github.com/HarrierPanels/Jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/HarrierPanels/Jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+using GIT_ASKPASS to set credentials github-creds-user-token
+ > git fetch --no-tags --force --progress -- https://github.com/HarrierPanels/Jenkins.git +refs/heads/master:refs/remotes/origin/master # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a1c0576053d1791a19257a79fb286854f3f851d3 # timeout=10
+ > git rev-list --no-walk 9c8382098522fecbbf96c050e66ddb4a0d070e51 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone Repository)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds-user-token
+Fetching changes from the remote Git repository
+Fetching without tags
+ > git rev-parse --resolve-git-dir /home/ec2-user/jenkins/workspace/Multibranch_master/.git # timeout=10
+ > git config remote.origin.url https://github.com/HarrierPanels/Jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/HarrierPanels/Jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+using GIT_ASKPASS to set credentials github-creds-user-token
+ > git fetch --no-tags --force --progress -- https://github.com/HarrierPanels/Jenkins.git +refs/heads/master:refs/remotes/origin/master # timeout=10
+Checking out Revision a1c0576053d1791a19257a79fb286854f3f851d3 (master)
+Commit message: "update 20"
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a1c0576053d1791a19257a79fb286854f3f851d3 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Check Commit Message)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ git log --format=%B -n 1
+update 20
+
+[Pipeline] sh
++ git log --format=%B -n 1
++ grep -q ''
++ echo true
+true
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint Dockerfiles)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ find . -name Dockerfile
+[Pipeline] sh
++ hadolint ./Dockerfile
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Check for Feature Branches)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 60eeea963b277272837449b4282f30ea1d5b789c (refs/remotes/origin/feature)
+Commit message: "update 19 feature"
+ > git rev-parse --resolve-git-dir /home/ec2-user/jenkins/workspace/Multibranch_master/.git # timeout=10
+ > git config remote.origin.url https://github.com/HarrierPanels/Jenkins # timeout=10
+Fetching upstream changes from https://github.com/HarrierPanels/Jenkins
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+ > git fetch --tags --force --progress -- https://github.com/HarrierPanels/Jenkins +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/feature^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 60eeea963b277272837449b4282f30ea1d5b789c # timeout=10
+ > git rev-list --no-walk 852ff763f3b360031040d507da5240c1ad2e1b5f # timeout=10
+[Pipeline] echo
+Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
+```
