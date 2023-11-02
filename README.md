@@ -71,7 +71,7 @@ for (User user : User.getAll()) {
     println("Username: " + user.id)
 }
 ```
-### Output:
+#### Output:
 > Username: dev<br>
 > Username: devops<br>
 > Username: qa
@@ -82,9 +82,9 @@ for (User user : User.getAll()) {
    b. Check the commit of the message for compliance with best practice (length of the message, first the Jira code of the ticket)
    c. Linting of Dockerfiles
 3. For a pipeline file, block the option to merge feature branch into main.
-### The [Jenkinsfile](Jenkinsfile) includes four stages:
+#### The [Jenkinsfile](Jenkinsfile) includes four stages:
 <sup>Clone Repository:</sup><br><br>Clones the repository from the current branch.<br><br> <sup>Check Commit Message:</sup><br><br>Checks the commit message for compliance with best practices.<br><br> <sup>Lint Dockerfiles:</sup><br><br>Lints the Dockerfiles using Hadolint.<br><br> <sup>Check for Feature Branches:</sup><br><br>Checks if there are any feature branches in the repository and prints a warning message if there are.<br><br>
-### Set Webhook:
+#### Set Webhook:
 ```
 [ec2-user@ip-192-168-0-145 ~]$ gh webhook forward \    
     --repo=HarrierPanels/my-java-project    \
