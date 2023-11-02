@@ -82,4 +82,8 @@ for (User user : User.getAll()) {
    b. Check the commit of the message for compliance with best practice (length of the message, first the Jira code of the ticket)
    c. Linting of Dockerfiles
 3. For a pipeline file, block the option to merge feature branch into main.
-
+### The Jenkinsfile below includes four stages:
+    Clone Repository: Clones the repository from the current branch.
+    Check Commit Message: Checks the commit message for compliance with best practices.
+    Lint Dockerfiles: Lints the Dockerfiles using Hadolint.
+    Check for Feature Branches: Checks if there are any feature branches in the repository and prints a warning message if there are
