@@ -29,12 +29,4 @@ pipeline {
 }
 ```
 #### Output:
-> [Pipeline] stage
-> [Pipeline] { (Test)
-> [Pipeline] sh
-> [guided-tour] Running shell script
-> + node --version
-> v16.13.1
-> [Pipeline] }
-> [Pipeline] // stage
-> [Pipeline] }
+> [Pipeline] stage<br>> [Pipeline] { (Test)<br>> [Pipeline] sh<br>> [guided-tour] Running shell script<br>> + node --version<br>> v16.13.1<br>> [Pipeline] }<br>> [Pipeline] // stage<br>> [Pipeline] }
