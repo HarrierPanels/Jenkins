@@ -30,4 +30,11 @@ pipeline {
 ```
 #### Output:
 > [Pipeline] stage
-. Result: [hudson.slaves.DumbSlave[local1]]
+> [Pipeline] { (Test)
+> [Pipeline] sh
+> [guided-tour] Running shell script
+> + node --version
+> v16.13.1
+> [Pipeline] }
+> [Pipeline] // stage
+> [Pipeline] }
