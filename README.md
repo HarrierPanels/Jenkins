@@ -203,3 +203,43 @@ GitHub has been notified of this commit’s build result
 
 Finished: SUCCESS
 ```
+Start of Pipeline - (12 sec in block)			
+	
+node - (7.4 sec in block)	local1		
+node block - (7.3 sec in block)			
+	
+stage - (1.6 sec in block)	Declarative: Checkout SCM		
+stage block (Declarative: Checkout SCM) - (1.5 sec in block)			
+	
+checkout - (1.5 sec in self)			
+withEnv - (5.6 sec in block)	GIT_BRANCH, GIT_COMMIT, GIT_PREVIOUS_COMMIT, GIT_PREVIOUS_SUCCESSFUL_COMMIT, GIT_URL		
+withEnv block - (5.5 sec in block)			
+	
+stage - (1.4 sec in block)	Clone Repository		
+stage block (Clone Repository) - (1.3 sec in block)			
+	
+checkout - (1.2 sec in self)			
+stage - (1.1 sec in block)	Check Commit Message		
+stage block (Check Commit Message) - (1 sec in block)			
+	
+script - (0.95 sec in block)			
+script block - (0.87 sec in block)			
+	
+sh - (0.46 sec in self)	git log --format=%B -n 1		
+sh - (0.37 sec in self)	git log --format=%B -n 1 | grep -q "${jiraPattern}" && echo "true" || echo "false"		
+stage - (1.2 sec in block)	Lint Dockerfiles		
+stage block (Lint Dockerfiles) - (1.1 sec in block)			
+	
+script - (1 sec in block)			
+script block - (0.84 sec in block)			
+	
+sh - (0.4 sec in self)	find . -name Dockerfile		
+sh - (0.38 sec in self)	hadolint ./Dockerfile		
+stage - (1.6 sec in block)	Check for Feature Branches		
+stage block (Check for Feature Branches) - (1.5 sec in block)			
+	
+script - (1.4 sec in block)			
+script block - (1.4 sec in block)			
+	
+checkout - (1.3 sec in self)			
+echo - (16 ms in self)	Warning: Merging feature branch into master is not allowed! Please use branch protection rules in your version control system to enforce this policy.
